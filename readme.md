@@ -1,0 +1,1 @@
+## To run this app download it and run the command npm i to install all denpendencies (Is required have node on you computer).

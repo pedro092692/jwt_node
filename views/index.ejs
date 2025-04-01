@@ -179,7 +179,21 @@
                     registerSpan.innerText = 'Usuario Registrado. Entrando...'
                     registerSpan.style.color = 'green'
                     setTimeout(() => {
-                        window.location.href = '/protected'
+                        fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                            },
+                body: JSON.stringify({ username, password })
+            })
+              .then(res => {
+                if(res.ok){
+                    window.location.href = '/protected'
+                }else{
+                    loginSpan.innerText = 'Error al iniciar sesion'
+                    loginSpan.style.color = 'red'
+                }
+              })
                     }, 1200)
                 }else{
                     registerSpan.innerText = 'Error al registrar usuario'
